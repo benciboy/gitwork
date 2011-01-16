@@ -14,7 +14,7 @@ typedef unsigned char U8;
 typedef unsigned short U16;
 typedef unsigned int  U32;
 
-typedef struct _s1{
+typedef struct {
 	U8 ch;
 	U16 si;
 	U32 ii;
@@ -22,7 +22,7 @@ typedef struct _s1{
 
 
 #pragma pack(push,1)
-typedef struct _s2{
+typedef struct {
 	U8 ch;
 	U16 si;
 	U32 ii;
@@ -30,11 +30,11 @@ typedef struct _s2{
 #pragma pack(pop)
 
 
-typedef struct __attribute__((__packed__)) _s3{
+typedef struct __attribute__((__packed__)) {
 	U8 ch;
 	U16 si;
 	U32 ii;
-	s1	s[1];
+	s2	s[1];
 }s3;
 
 
