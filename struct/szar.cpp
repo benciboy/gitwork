@@ -10,56 +10,81 @@
 
 using namespace std;
 
-int main() {
+typedef unsigned char U8;
+typedef unsigned short U16;
+typedef unsigned int  U32;
 
-	typedef unsigned char U8;
+typedef struct _s1{
+	U8 ch;
+	U16 si;
+	U32 ii;
+} s1;
 
-	typedef struct _s1{
-		unsigned int i;
-		unsigned char c;
-		unsigned long a;
-		unsigned short e;
-	} s1;
-
-	cout<<  "s1 size is : " << sizeof(s1) ;
 
 #pragma pack(push,1)
-	typedef struct _s2{
-		unsigned int i;
-		unsigned char c;
-		unsigned long a;
-		unsigned short e;
-	} s2;
+typedef struct _s2{
+	U8 ch;
+	U16 si;
+	U32 ii;
+} s2;
 #pragma pack(pop)
 
+
+typedef struct __attribute__((__packed__)) _s3{
+	U8 ch;
+	U16 si;
+	U32 ii;
+	s1	s[1];
+}s3;
+
+
+//__attribute__((__packed__)) ;
+
+int main() {
+
+
+	cout<<  "s1 size is : " << sizeof(s1) ;
 	cout<<  "\ns2 size is : " << sizeof(s2) ;
-	cout<<  "\nsum of element is : "
-			<<	"\n sizeof(unsigned int)"  <<   sizeof(unsigned int)
-			<<	"\n sizeof(unsigned char)"  <<   sizeof(unsigned char)
-			<<    "\n sizeof(unsigned long)  "  << sizeof(unsigned long)
-			<<   "\n sizeof(unsigned short) "  <<  sizeof(unsigned short)
-			;
 
-	struct _s3{
-		unsigned int i;
-		unsigned char c;
-		unsigned long a;
-		unsigned short e;
-		s1			s;
-	}__attribute__((__packed__)) ;
 
-	typedef struct _s3 s3;
+
+	//typedef struct _s3 s3;
 	cout<<  "\ns3 size is : " << sizeof(s3) ;
 
-	s3 packolt = {1,'A',2, 3};
+	s1 extra={'C',6,7};
+	s3 packolt = {'A',2, 3,{{'B',4,5}}};
 
 	U8* buffer = (U8*) (&packolt);
 	//U8* buffer = static_cast<int> (&packolt);
 	cout<< "\n buffer[0] : " << *((unsigned long*) (buffer+5)) << endl ;
 
-	//s1 sima = {11,'A',22, 33};
+
 	s3 kibontot =  packolt ;
-	cout<<  "kibontot.a : "  << kibontot.a   << endl ;
+	cout<<  "kibontot. : "  << kibontot.si   << endl ;
+
+
 
 	return 0;
+}
+
+
+
+void junk(){
+
+	/*	cout<<  "\nsum of element is : "
+				<<	"\n sizeof(U8 ) : "  <<     sizeof(U8 )
+				<<	"\n sizeof(U16) : "  <<     sizeof(U16)
+				<<  "\n sizeof(U32) : "  <<     sizeof(U32)
+				;*/
+
+	/*********/
+
+	/*	#pragma bitfield_packing on
+	struct {
+		U8 id : 8;
+		U16 chan : 16;
+		U32 freq : 32;
+	} tx;
+
+	cout<<  "tx size : "  << sizeof(tx)  << endl ;*/
 }
