@@ -52,7 +52,7 @@ function gui_OpeningFcn(hObject, eventdata, handles, varargin)
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to gui (see VARARGIN)
 
-set(handles.uitable2,'Data',randn(4,4));
+set(handles.uitable2,'Data',randn(10,10));
 % Choose default command line output for gui
 handles.output = hObject;
 
@@ -79,7 +79,7 @@ function pushbutton1_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton1 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-set(handles.uitable2,'Data',randn(4,4));
+set(handles.uitable2,'Data',randn(10,10));
 
 
 % --- Executes when entered data in editable cell(s) in uitable2.
