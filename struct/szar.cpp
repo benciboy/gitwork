@@ -7,7 +7,8 @@
 //============================================================================
 
 #include <iostream>
-
+#include <string>
+#include <stdio.h>
 using namespace std;
 
 typedef unsigned char U8;
@@ -42,7 +43,16 @@ typedef struct __attribute__((__packed__)) {
 
 int main() {
 
+	U8 uvar = 0xff;
 
+	char szU8[4] = {0xFF,0xA0,0xb0,0xc0};
+	string s()=255;
+	//	const char* (szU8)) ;
+	//cout<<  "s size is : " << s.length() ;
+
+	for (int var = 0; var < 4; ++var) {
+		printf("s[%d] : 0x%x\n",var, s[var]);
+	}
 	cout<<  "s1 size is : " << sizeof(s1) ;
 	cout<<  "\ns2 size is : " << sizeof(s2) ;
 
@@ -60,7 +70,7 @@ int main() {
 
 
 	s3 kibontot =  packolt ;
-	cout<<  "kibontot. : "  << kibontot.si   << endl ;
+	cout<<  "kibontot. : "  << kibontot.si   << endl   ;
 
 
 
